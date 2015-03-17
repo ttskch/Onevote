@@ -3,6 +3,7 @@
 namespace Votee\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Board
@@ -31,6 +32,8 @@ class Board
     /**
      * @var string
      *
+     * @Assert\NotBlank()
+     *
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
@@ -38,14 +41,14 @@ class Board
     /**
      * @var array
      *
-     * @ORM\Column(name="voters", type="array")
+     * @ORM\Column(name="voters", type="array", nullable=true)
      */
     private $voters;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="note", type="text")
+     * @ORM\Column(name="note", type="text", nullable=true)
      */
     private $note;
 

@@ -24,14 +24,14 @@ class Vote
     /**
      * @var string
      *
-     * @ORM\Column(name="voter", type="string", length=255)
+     * @ORM\Column(name="voter", type="string", length=255, nullable=true)
      */
     private $voter;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="note", type="text")
+     * @ORM\Column(name="note", type="text", nullable=true)
      */
     private $note;
 
@@ -39,7 +39,7 @@ class Vote
      * @var Choice
      *
      * @ORM\ManyToOne(targetEntity="Choice", inversedBy="votes")
-     * @ORM\JoinColumn(name="choice_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="choice_id", referencedColumnName="id", nullable=false)
      */
     private $choice;
 
