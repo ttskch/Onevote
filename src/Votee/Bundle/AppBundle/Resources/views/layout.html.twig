@@ -1,0 +1,47 @@
+{% extends 'MopaBootstrapBundle::base.html.twig' %}
+
+{% block title %}
+    {% block subtitle %}{% endblock %}
+    {% if block('subtitle') is not empty %} | {% endif %}
+    Votee
+{% endblock %}
+
+{% block navbar %}
+    {% embed '@MopaBootstrap/Navbar/navbar.html.twig' with { fixedTop: false, inverse: false } %}
+        {% block brand %}
+            <a class="navbar-brand" href="{{ path('home') }}">Votee</a>
+        {% endblock %}
+        {% block menu %}
+            <ul class="nav navbar-nav">
+                <li><a href=""></a></li>
+            </ul>
+        {% endblock %}
+    {% endembed %}
+{% endblock navbar %}
+
+{% block container_class %}container{% endblock container_class %}
+
+{% block page_header %}{% endblock page_header %}
+
+{% block footer %}
+    <p>Powered by <a href="https://github.com/qckanemoto/Votee" target="_blank">Votee</a></p>
+{% endblock footer %}
+
+{% block head_style %}
+    {% stylesheets filter='less,cssrewrite'
+    '@VoteeAppBundle/Resources/public/less/style.less'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block foot_script_assetic %}
+    {% javascripts
+    '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
+    '@MopaBootstrapBundle/Resources/public/bootstrap/dist/js/bootstrap.js'
+    '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+    '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
