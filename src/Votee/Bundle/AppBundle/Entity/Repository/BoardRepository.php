@@ -1,6 +1,6 @@
 <?php
 
-namespace Votee\Bundle\AppBundle\Entity;
+namespace Votee\Bundle\AppBundle\Entity\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

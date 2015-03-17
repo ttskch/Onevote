@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Vote
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="Votee\Bundle\AppBundle\Entity\VoteRepository")
+ * @ORM\Entity(repositoryClass="Votee\Bundle\AppBundle\Entity\Repository\VoteRepository")
  */
 class Vote
 {
@@ -39,7 +39,7 @@ class Vote
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -62,7 +62,7 @@ class Vote
     /**
      * Get voter
      *
-     * @return string 
+     * @return string
      */
     public function getVoter()
     {
@@ -85,7 +85,7 @@ class Vote
     /**
      * Get note
      *
-     * @return string 
+     * @return string
      */
     public function getNote()
     {
