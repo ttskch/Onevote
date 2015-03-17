@@ -49,6 +49,13 @@ class Board
      */
     private $note;
 
+    /**
+     * @var Choice[]
+     *
+     * @ORM\OneToMany(targetEntity="Choice", mappedBy="board", cascade={"all"})
+     */
+    private $choices;
+
 
     /**
      * Get id
@@ -150,5 +157,21 @@ class Board
     public function getNote()
     {
         return $this->note;
+    }
+
+    /**
+     * @param Choice[] $choices
+     */
+    public function setChoices($choices)
+    {
+        $this->choices = $choices;
+    }
+
+    /**
+     * @return Choice[]
+     */
+    public function getChoices()
+    {
+        return $this->choices;
     }
 }

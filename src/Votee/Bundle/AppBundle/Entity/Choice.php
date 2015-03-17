@@ -35,6 +35,21 @@ class Choice
      */
     private $note;
 
+    /**
+     * @var Board
+     *
+     * @ORM\ManyToOne(targetEntity="Board", inversedBy="choices")
+     * @ORM\JoinColumn(name="board_id", referencedColumnName="id")
+     */
+    private $board;
+
+    /**
+     * @var Vote[]
+     *
+     * @ORM\OneToMany(targetEntity="Vote", mappedBy="choice", cascade={"all"})
+     */
+    private $votes;
+
 
     /**
      * Get id
@@ -90,5 +105,37 @@ class Choice
     public function getNote()
     {
         return $this->note;
+    }
+
+    /**
+     * @param Board $board
+     */
+    public function setBoard($board)
+    {
+        $this->board = $board;
+    }
+
+    /**
+     * @return Board
+     */
+    public function getBoard()
+    {
+        return $this->board;
+    }
+
+    /**
+     * @param Vote[] $votes
+     */
+    public function setVotes($votes)
+    {
+        $this->votes = $votes;
+    }
+
+    /**
+     * @return Vote[]
+     */
+    public function getVotes()
+    {
+        return $this->votes;
     }
 }

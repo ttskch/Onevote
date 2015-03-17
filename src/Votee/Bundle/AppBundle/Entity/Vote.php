@@ -35,6 +35,14 @@ class Vote
      */
     private $note;
 
+    /**
+     * @var Choice
+     *
+     * @ORM\ManyToOne(targetEntity="Choice", inversedBy="votes")
+     * @ORM\JoinColumn(name="choice_id", referencedColumnName="id")
+     */
+    private $choice;
+
 
     /**
      * Get id
@@ -90,5 +98,21 @@ class Vote
     public function getNote()
     {
         return $this->note;
+    }
+
+    /**
+     * @param Choice $choice
+     */
+    public function setChoice($choice)
+    {
+        $this->choice = $choice;
+    }
+
+    /**
+     * @return Choice
+     */
+    public function getChoice()
+    {
+        return $this->choice;
     }
 }
