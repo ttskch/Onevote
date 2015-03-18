@@ -211,6 +211,21 @@ class Board
     }
 
     /**
+     * Get all of votes of choices
+     *
+     * @return array
+     */
+    public function getVotes()
+    {
+        $votes = [];
+        foreach ($this->choices as $choice) {
+            $votes = array_merge($votes, $choice->getVotes()->toArray());
+        }
+
+        return $votes;
+    }
+
+    /**
      * Get unvoted voters
      *
      * @return array
@@ -218,11 +233,9 @@ class Board
     public function getUnvoters()
     {
         $voters = [];
-        foreach ($this->choices as $choice) {
-            foreach ($choice->getVotes() as $vote) {
-                /** @var $vote Vote */
-                $voters[] = $vote->getVoter();
-            }
+        foreach ($this->getVotes() as $vote) {
+            /** @var $vote Vote */
+            $voters[] = $vote->getVoter();
         }
 
         $unvoters = array_diff($this->voters, $voters);

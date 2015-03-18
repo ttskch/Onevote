@@ -31,15 +31,8 @@ class DefaultController extends Controller
      */
     public function boardAction(Board $board)
     {
-        $totalVotesNum = 0;
-        foreach ($board->getChoices() as $choice) {
-            /** @var $choice Choice */
-            $totalVotesNum += count($choice->getVotes());
-        }
-
         return [
             'board' => $board,
-            'total_votes_num' => $totalVotesNum,
         ];
     }
 
