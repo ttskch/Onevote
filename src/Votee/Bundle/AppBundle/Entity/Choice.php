@@ -34,13 +34,6 @@ class Choice
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="note", type="text", nullable=true)
-     */
-    private $note;
-
-    /**
      * @var Board
      *
      * @ORM\ManyToOne(targetEntity="Board", inversedBy="choices")
@@ -95,29 +88,6 @@ class Choice
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set note
-     *
-     * @param string $note
-     * @return Choice
-     */
-    public function setNote($note)
-    {
-        $this->note = $note;
-
-        return $this;
-    }
-
-    /**
-     * Get note
-     *
-     * @return string
-     */
-    public function getNote()
-    {
-        return $this->note;
     }
 
     /**

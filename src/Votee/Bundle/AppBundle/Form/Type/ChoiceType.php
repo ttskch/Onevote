@@ -16,7 +16,6 @@ class ChoiceType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('note')
         ;
     }
 
