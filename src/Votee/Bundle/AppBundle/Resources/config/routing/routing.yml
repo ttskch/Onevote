@@ -1,0 +1,7 @@
+votee_app:
+  resource: "@VoteeAppBundle/Controller/"
+  type: annotation
+
+votee_app_rest:
+  resource: "@VoteeAppBundle/Resources/config/routing/rest.yml"
+  type: rest

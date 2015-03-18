@@ -1,6 +1,30 @@
 @import "../../../../../../../vendor/mopa/bootstrap-bundle/Mopa/Bundle/BootstrapBundle/Resources/public/less/mopabootstrapbundle-fa4";
 @fa-font-path:  "/bundles/mopabootstrap/fonts/fa4";
 
+h1, h2, h3, h4, h5, h6 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: .5em;
+    margin-bottom: 1em;
+}
+
+.form-group {
+    &.required {
+        .control-label {
+            &:after {
+                content: "*";
+                &:extend(.text-danger);
+                margin-left: .3em;
+            }
+        }
+    }
+}
+
+.input-group {
+    &:not(:first-child) {
+        margin-top: 5px;
+    }
+}
+
 footer {
     border-top: 1px solid #ddd;
     padding: 20px 0;

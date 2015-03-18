@@ -1,7 +1,9 @@
 votee_app:
-    resource: "@VoteeAppBundle/Controller/"
-    type:     annotation
+    resource: "@VoteeAppBundle/Resources/config/routing/routing.yml"
     prefix:   /
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 
 app:
     resource: @AppBundle/Controller/

@@ -1,4 +1,61 @@
 {% extends 'VoteeAppBundle::layout.html.twig' %}
 
-{% block content_row %}
+{% block content %}
+
+    <div class="col-lg-offset-2 col-lg-8">
+        <h3><i class="fa fa-pencil-square-o"></i> 投票ボードを作成する</h3>
+
+        <form id="create-board-form" class="form-horizontal">
+            <div class="form-group required">
+                <label class="col-sm-2 control-label">ボード名</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" required autofocus/>
+                </div>
+            </div>
+
+            <div class="form-group required">
+                <label class="col-sm-2 control-label">選択肢</label>
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <input class="form-control" type="text" required/>
+                    <span class="input-group-btn">
+                        <span class="btn btn-danger btn-remove"><i class="fa fa-trash-o"></i></span>
+                    </span>
+                    </div>
+                    <div class="input-group">
+                        <input class="form-control" type="text" required/>
+                    <span class="input-group-btn">
+                        <span class="btn btn-default btn-add"><i class="fa fa-plus"></i></span>
+                    </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">投票者</label>
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <input class="form-control" type="text"/>
+                        <span class="input-group-btn">
+                            <span class="btn btn-default btn-add"><i class="fa fa-plus"></i></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">備考</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="5"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">この内容で作成</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
 {% endblock %}

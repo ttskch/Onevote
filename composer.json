@@ -24,7 +24,10 @@
         "mopa/bootstrap-bundle": "~3.0@beta",
         "twbs/bootstrap": "~3.3",
         "knplabs/knp-menu-bundle": "~2.0@dev",
-        "knplabs/knp-menu": "~2.0@dev"
+        "knplabs/knp-menu": "~2.0@dev",
+        "friendsofsymfony/jsrouting-bundle": "~1.5",
+        "friendsofsymfony/rest-bundle": "~1.5",
+        "jms/serializer-bundle": "~0.13"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

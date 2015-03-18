@@ -1,0 +1,7 @@
+votee_app_rest_content:
+  resource: "@VoteeAppBundle/Controller/Rest/BoardController.php"
+  type: rest
+  prefix: api/v1
+  name_prefix: api_v1_votee_app_
+  options:
+    expose: true

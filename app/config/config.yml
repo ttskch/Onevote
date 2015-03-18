@@ -85,3 +85,8 @@ mopa_bootstrap:
     menu: ~
     icons:
         icon_set: fontawesome4
+
+# FOSRestBundle
+fos_rest:
+    view:
+        view_response_listener: true
