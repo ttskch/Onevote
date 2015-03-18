@@ -53,6 +53,10 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
             "Mopa\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::postInstallSymlinkTwitterBootstrap"
+        ],
+        "compile": [
+            "php app/console assetic:dump",
+            "php app/console doctrine:schema:update --force"
         ]
     },
     "config": {
@@ -63,7 +67,14 @@
         "symfony-web-dir": "web",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
+            "file": "app/config/parameters.yml",
+            "env-map": {
+                "database_host": "APP_DATABASE_HOST",
+                "database_port": "APP_DATABASE_PORT",
+                "database_name": "APP_DATABASE_NAME",
+                "database_user": "APP_DATABASE_USER",
+                "database_password": "APP_DATABASE_PASSWORD"
+            }
         }
     }
 }

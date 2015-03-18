@@ -1,0 +1,8 @@
+{
+    "repository": {
+        "private": true
+    },
+    "dependencies": {
+        "less": "~1.7"
+    }
+}
