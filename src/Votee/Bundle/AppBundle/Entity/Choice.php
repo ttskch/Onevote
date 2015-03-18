@@ -145,4 +145,12 @@ class Choice
     {
         return $this->votes;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

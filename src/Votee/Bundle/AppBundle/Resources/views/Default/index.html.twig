@@ -72,10 +72,25 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">この内容で作成</button>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit"><i class="fa fa-check"></i> この内容で作成する</button>
                 </div>
             </div>
         </form>
     </div>
 
+{% endblock %}
+
+{% block foot_script_assetic %}
+    {% javascripts
+    '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
+    '@MopaBootstrapBundle/Resources/public/bootstrap/dist/js/bootstrap.js'
+    '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+    '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+    'https://raw.githubusercontent.com/marioizquierdo/jquery.serializeJSON/master/jquery.serializejson.min.js'
+    '@VoteeAppBundle/Resources/public/js/Default/index.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { 'callback': 'fos.Router.setData' }) }}"></script>
+    {% endjavascripts %}
 {% endblock %}

@@ -209,4 +209,24 @@ class Board
     {
         return $this->choices;
     }
+
+    /**
+     * Get unvoted voters
+     *
+     * @return array
+     */
+    public function getUnvoters()
+    {
+        $voters = [];
+        foreach ($this->choices as $choice) {
+            foreach ($choice->getVotes() as $vote) {
+                /** @var $vote Vote */
+                $voters[] = $vote->getVoter();
+            }
+        }
+
+        $unvoters = array_diff($this->voters, $voters);
+
+        return $unvoters;
+    }
 }

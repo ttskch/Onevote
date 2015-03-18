@@ -7,3 +7,5 @@ votee_app:
 votee_app_rest:
   resource: "@VoteeAppBundle/Resources/config/routing/rest.yml"
   type: rest
+  options:
+    expose: true
