@@ -43,7 +43,7 @@ class Board
     /**
      * @var array
      *
-     * @ORM\Column(name="voters", type="array", length=65535, nullable=true)
+     * @ORM\Column(name="voters", type="json_array", length=65535, nullable=true)
      */
     private $voters;
 
