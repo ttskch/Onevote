@@ -1,6 +1,8 @@
 votee_app:
   resource: "@VoteeAppBundle/Controller/"
   type: annotation
+  options:
+    expose: true
 
 votee_app_rest:
   resource: "@VoteeAppBundle/Resources/config/routing/rest.yml"
