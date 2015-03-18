@@ -8,4 +8,42 @@
 {% endblock %}
 
 {% block content_content %}
+    <table class="table table-bordered">
+        {% for choice in board.choices %}
+            {% set votes_num = choice.votes|length %}
+            <tr>
+                <th class="col-xs-9 col-sm-6">{{ choice.name }}</th>
+                <td class="col-xs-3 col-sm-6">
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width:{{ votes_num / board.votes|length * 100 }}%;">
+                            {% if votes_num > 0 %}
+                                <span>{{ votes_num }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>投票者</th>
+                <th>選択肢</th>
+                <th>コメント</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for vote in board.votes %}
+                <tr>
+                    <td>{{ vote.voter|default('名無しさん') }}</td>
+                    <td>{{ vote.choice.name }}</td>
+                    <td>{{ vote.note }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
