@@ -2,6 +2,8 @@
 
 namespace Votee\Bundle\AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -25,7 +27,7 @@ class Board
     /**
      * @var string
      *
-     * @ORM\Column(name="hash", type="string", length=255)
+     * @ORM\Column(name="hash", type="string", length=255, unique=true)
      */
     private $hash;
 
@@ -41,7 +43,7 @@ class Board
     /**
      * @var array
      *
-     * @ORM\Column(name="voters", type="array", nullable=true)
+     * @ORM\Column(name="voters", type="array", length=65535, nullable=true)
      */
     private $voters;
 
@@ -53,12 +55,21 @@ class Board
     private $note;
 
     /**
-     * @var Choice[]
+     * @var Choice[]|Collection
      *
      * @ORM\OneToMany(targetEntity="Choice", mappedBy="board", cascade={"all"})
      */
     private $choices;
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->hash = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
+        $this->choices = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -163,15 +174,36 @@ class Board
     }
 
     /**
-     * @param Choice[] $choices
+     * Add choices
+     *
+     * @param Choice $choice
+     * @return Board
      */
-    public function setChoices($choices)
+    public function addChoice(Choice $choice)
     {
-        $this->choices = $choices;
+        $choice->setBoard($this);
+
+        $this->choices[] = $choice;
+
+        return $this;
     }
 
     /**
-     * @return Choice[]
+     * Remove choice
+     *
+     * @param Choice $choice
+     */
+    public function removeChoice(Choice $choice)
+    {
+        $choice->setBoard(null);
+
+        $this->choices->removeElement($choice);
+    }
+
+    /**
+     * Get choices
+     *
+     * @return Collection
      */
     public function getChoices()
     {

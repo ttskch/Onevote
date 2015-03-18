@@ -2,6 +2,8 @@
 
 namespace Votee\Bundle\AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -47,12 +49,20 @@ class Choice
     private $board;
 
     /**
-     * @var Vote[]
+     * @var Vote[]|Collection
      *
      * @ORM\OneToMany(targetEntity="Vote", mappedBy="choice", cascade={"all"})
      */
     private $votes;
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->votes = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -111,14 +121,21 @@ class Choice
     }
 
     /**
+     * Set board
+     *
      * @param Board $board
+     * @return Choice
      */
-    public function setBoard($board)
+    public function setBoard(Board $board)
     {
         $this->board = $board;
+
+        return $this;
     }
 
     /**
+     * Get board
+     *
      * @return Board
      */
     public function getBoard()
@@ -127,15 +144,32 @@ class Choice
     }
 
     /**
-     * @param Vote[] $votes
+     * Add votes
+     *
+     * @param Vote $votes
+     * @return Choice
      */
-    public function setVotes($votes)
+    public function addVote(Vote $vote)
     {
-        $this->votes = $votes;
+        $this->votes[] = $vote;
+
+        return $this;
     }
 
     /**
-     * @return Vote[]
+     * Remove votes
+     *
+     * @param Vote $vote
+     */
+    public function removeVote(Vote $vote)
+    {
+        $this->votes->removeElement($vote);
+    }
+
+    /**
+     * Get votes
+     *
+     * @return Collection
      */
     public function getVotes()
     {

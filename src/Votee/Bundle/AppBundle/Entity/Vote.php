@@ -101,14 +101,21 @@ class Vote
     }
 
     /**
+     * Set choice
+     *
      * @param Choice $choice
+     * @return Vote
      */
-    public function setChoice($choice)
+    public function setChoice(Choice $choice)
     {
         $this->choice = $choice;
+
+        return $this;
     }
 
     /**
+     * Get choice
+     *
      * @return Choice
      */
     public function getChoice()
