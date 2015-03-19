@@ -15,7 +15,7 @@
                 <th class="col-xs-9 col-sm-6">{{ choice.name }}</th>
                 <td class="col-xs-3 col-sm-6">
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width:{{ votes_num / board.votes|length * 100 }}%;">
+                        <div class="progress-bar" role="progressbar" style="width:{% if board.votes is empty %}0{% else %}{{ votes_num / board.votes|length * 100 }}{% endif %}%;">
                             {% if votes_num > 0 %}
                                 <span>{{ votes_num }}</span>
                             {% endif %}
