@@ -26,6 +26,7 @@ $(function () {
         }).done(function (data) {
             location.href = Routing.generate('votee_app_board_votes', { hash: data.choice.board.hash });
         }).fail(function (xhr) {
+            $('#spinner-modal').modal('hide');
             // todo.
         });
     });
