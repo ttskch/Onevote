@@ -2,88 +2,90 @@
 
 {% block content %}
 
-<div class="col-lg-offset-2 col-lg-8">
-    <h3><i class="fa fa-file-text-o"></i> {{ board.name }}</h3>
+    <div class="col-lg-offset-2 col-lg-8">
+        <h3><i class="fa fa-file-text-o"></i> {{ board.name }}</h3>
 
-    {% if board.note %}
-        <p class="well">{{ board.note|nl2br }}</p>
-    {% endif %}
+        {% if board.note %}
+            <p class="well">{{ board.note|nl2br }}</p>
+        {% endif %}
 
-    {% if board.unvoters %}
-        <p class="well">
-            <strong>未投票者：</strong>
-            {% for name in board.unvoters %}
-                <span class="label label-danger">{{ name }}</span>
-            {% endfor %}
-        </p>
-    {% endif %}
+        {% if board.unvoters %}
+            <p class="well">
+                <strong>未投票者：</strong>
+                {% for name in board.unvoters %}
+                    <span class="label label-danger">{{ name }}</span>
+                {% endfor %}
+            </p>
+        {% endif %}
 
-    {% block tabs %}
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#">投票する</a></li>
-            <li><a href="{{ path('votee_app_default_board_votes', { hash: board.hash }) }}">結果を見る</a></li>
-        </ul>
-    {% endblock %}
+        {% block tabs %}
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#">投票する</a></li>
+                <li><a href="{{ path('votee_app_default_board_votes', { hash: board.hash }) }}">結果を見る</a></li>
+            </ul>
+        {% endblock %}
 
-    {% block content_content %}
-    <form id="submit-vote-form" class="form-horizontal" style="margin-bottom:50px;">
-        <div class="form-group">
-            <label class="col-sm-2 control-label">あなたの名前</label>
-            <div class="col-sm-10">
-                {% if board.voters %}
-                    <select class="form-control" name="voter" required autofocus>
-                        {% for name in board.unvoters %}
-                            <option value="{{ name }}">{{ name }}</option>
-                        {% endfor %}
-                    </select>
-                {% else %}
-                    <input class="form-control" type="text" name="voter" placeholder="省略可"/>
-                {% endif %}
-            </div>
-        </div>
+        {% block content_content %}
+            <form id="submit-vote-form" class="form-horizontal" style="margin-bottom:50px;">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">あなたの名前</label>
+                    <div class="col-sm-10">
+                        {% if board.voters %}
+                            <select class="form-control" name="voter" required autofocus>
+                                {% for name in board.unvoters %}
+                                    <option value="{{ name }}">{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                        {% else %}
+                            <input class="form-control" type="text" name="voter" placeholder="省略可"/>
+                        {% endif %}
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label">選択肢</label>
-            <div class="col-sm-10">
-                <table class="table table-bordered">
-                    {% for choice in board.choices %}
-                        {% set votes_num = choice.votes|length %}
-                        <tr>
-                            <th class="col-xs-9 col-sm-5">{{ choice.name }}</th>
-                            <td class="hidden-xs col-sm-5">
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width:{% if board.votes is empty %}0{% else %}{{ votes_num / board.votes|length * 100 }}{% endif %}%;">
-                                        {% if votes_num > 0 %}
-                                        <span>{{ votes_num }}</span>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="col-xs-3 col-sm-2">
-                                <span class="btn btn-xs btn-default btn-block btn-plus-one" data-choice="{{ choice.id }}"><i class="fa fa-thumbs-o-up"></i></span>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </table>
-                <input type="hidden" name="choice"/>
-            </div>
-        </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">選択肢</label>
+                    <div class="col-sm-10">
+                        <table class="table table-bordered">
+                            {% for choice in board.choices %}
+                                {% set votes_num = choice.votes|length %}
+                                <tr>
+                                    <th class="col-xs-9 col-sm-5">{{ choice.name }}</th>
+                                    <td class="hidden-xs col-sm-5">
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width:{% if board.votes is empty %}0{% else %}{{ votes_num / board.votes|length * 100 }}{% endif %}%;">
+                                                {% if votes_num > 0 %}
+                                                    <span>{{ votes_num }}</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="col-xs-3 col-sm-2">
+                                        <span class="btn btn-xs btn-default btn-block btn-plus-one" data-choice="{{ choice.id }}"><i class="fa fa-thumbs-o-up"></i></span>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                        <input type="hidden" name="choice"/>
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <label class="col-sm-2 control-label">コメント</label>
-            <div class="col-sm-10">
-                <textarea class="form-control" rows="5" name="note" placeholder="省略可"></textarea>
-            </div>
-        </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">コメント</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="5" name="note" placeholder="省略可"></textarea>
+                    </div>
+                </div>
 
 
-        <div class="form-group text-center">
-            <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i> 投票する</button>
-        </div>
-    </form>
-    {% endblock %}
+                <div class="form-group text-center">
+                    <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i> 投票する</button>
+                </div>
+            </form>
+        {% endblock %}
 
-</div>
+    </div>
+
+    {% include 'VoteeAppBundle::spinner-modal.html.twig' %}
 
 {% endblock %}
 

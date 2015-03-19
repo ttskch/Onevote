@@ -10,16 +10,23 @@ $(function () {
 
     $('#submit-vote-form').on('submit', function (e) {
         e.preventDefault();
+
+        $('button, input, select, textarea').blur();
+        $('#spinner-modal').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+
         var data = $(this).serializeJSON();
         $.ajax({
             type: 'POST',
-            async: true,
             url: Routing.generate('api_v1_votee_app_post_vote', { _format: 'json' }),
-            data: data,
             dataType: 'json',
-            success: function (data) {
-                location.href = Routing.generate('votee_app_default_board_votes', { hash: data.choice.board.hash });
-            }
+            data: data
+        }).done(function (data) {
+            location.href = Routing.generate('votee_app_default_board_votes', { hash: data.choice.board.hash });
+        }).fail(function (xhr) {
+            // todo.
         });
     });
 });

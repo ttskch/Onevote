@@ -14,16 +14,23 @@ $(function () {
 
     $('#create-board-form').on('submit', function (e) {
         e.preventDefault();
+
+        $('button, input, select, textarea').blur();
+        $('#spinner-modal').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+
         var data = $(this).serializeJSON();
         $.ajax({
             type: 'POST',
-            async: true,
-            url: Routing.generate('api_v1_votee_app_post_board', { _format: 'json' }),
-            data: data,
+            url: Routing.generate('api_v1_votee_app_post_board', {_format: 'json'}),
             dataType: 'json',
-            success: function (data) {
-                location.href = Routing.generate('votee_app_default_board', { hash: data.hash });
-            }
+            data: data
+        }).done(function (data) {
+            location.href = Routing.generate('votee_app_default_board', { hash: data.hash });
+        }).fail(function (xhr) {
+            // todo.
         });
     });
 });
