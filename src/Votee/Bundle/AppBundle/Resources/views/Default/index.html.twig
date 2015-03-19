@@ -82,6 +82,15 @@
 
 {% endblock %}
 
+{% block head_style %}
+    {% stylesheets filter='less,cssrewrite'
+    '@VoteeAppBundle/Resources/public/less/layout.less'
+    '@VoteeAppBundle/Resources/public/less/Default/index.less'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block foot_script_assetic %}
     {% javascripts
     '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'

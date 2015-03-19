@@ -21,7 +21,7 @@
         {% block tabs %}
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#">投票する</a></li>
-                <li><a href="{{ path('votee_app_default_board_votes', { hash: board.hash }) }}">結果を見る</a></li>
+                <li><a href="{{ path('votee_app_board_votes', { hash: board.hash }) }}">結果を見る</a></li>
             </ul>
         {% endblock %}
 
@@ -89,6 +89,15 @@
 
 {% endblock %}
 
+{% block head_style %}
+    {% stylesheets filter='less,cssrewrite'
+    '@VoteeAppBundle/Resources/public/less/layout.less'
+    '@VoteeAppBundle/Resources/public/less/Board/index.less'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block foot_script_assetic %}
     {% javascripts
     '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
@@ -96,7 +105,7 @@
     '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
     '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
     'https://raw.githubusercontent.com/marioizquierdo/jquery.serializeJSON/master/jquery.serializejson.min.js'
-    '@VoteeAppBundle/Resources/public/js/Default/board.js'
+    '@VoteeAppBundle/Resources/public/js/Board/index.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>

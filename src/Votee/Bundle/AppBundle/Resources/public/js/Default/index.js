@@ -28,7 +28,7 @@ $(function () {
             dataType: 'json',
             data: data
         }).done(function (data) {
-            location.href = Routing.generate('votee_app_default_board', { hash: data.hash });
+            location.href = Routing.generate('votee_app_board_index', { hash: data.hash });
         }).fail(function (xhr) {
             // todo.
         });

@@ -1,8 +1,8 @@
-{% extends 'VoteeAppBundle:Default:board.html.twig' %}
+{% extends 'VoteeAppBundle:Board:index.html.twig' %}
 
 {% block tabs %}
     <ul class="nav nav-tabs">
-        <li><a href="{{ path('votee_app_default_board', { hash: board.hash }) }}">投票する</a></li>
+        <li><a href="{{ path('votee_app_board_index', { hash: board.hash }) }}">投票する</a></li>
         <li class="active"><a href="#">結果を見る</a></li>
     </ul>
 {% endblock %}

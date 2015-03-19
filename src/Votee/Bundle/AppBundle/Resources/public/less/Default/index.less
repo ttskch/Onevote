@@ -1,0 +1,22 @@
+.form-group {
+    &.required {
+        .control-label {
+            &:after {
+                content: "*";
+                &:extend(.text-danger);
+                margin-left: .3em;
+            }
+        }
+    }
+}
+
+.input-block-list > * {
+    &:not(:first-child) {
+        margin-top: 5px;
+    }
+}
+
+#choice-prototype,
+#voter-prototype {
+    display: none;
+}
