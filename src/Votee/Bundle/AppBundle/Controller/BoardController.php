@@ -27,6 +27,19 @@ class BoardController extends Controller
     }
 
     /**
+     * @Route("/{hash}/edit", name="votee_app_board_edit")
+     * @Template()
+     *
+     * @ParamConverter("board", class="VoteeAppBundle:Board")
+     */
+    public function editAction(Board $board)
+    {
+        return [
+            'board' => $board,
+        ];
+    }
+
+    /**
      * @Route("/{hash}/votes", name="votee_app_board_votes")
      * @Template()
      *

@@ -57,7 +57,7 @@ class Board
     /**
      * @var Choice[]|Collection
      *
-     * @ORM\OneToMany(targetEntity="Choice", mappedBy="board", cascade={"all"})
+     * @ORM\OneToMany(targetEntity="Choice", mappedBy="board", cascade={"all"}, orphanRemoval=true)
      */
     private $choices;
 
@@ -195,8 +195,6 @@ class Board
      */
     public function removeChoice(Choice $choice)
     {
-        $choice->setBoard(null);
-
         $this->choices->removeElement($choice);
     }
 
