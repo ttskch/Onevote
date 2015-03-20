@@ -4,6 +4,7 @@ namespace Votee\Bundle\Appbundle\Controller\Rest;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Votee\Bundle\AppBundle\Entity\Board;
 use Votee\Bundle\AppBundle\Form\Type\BoardType;
@@ -18,9 +19,7 @@ class BoardController extends FOSRestController
      */
     public function postAction(Request $request)
     {
-        $form = $this->get('form.factory')->createNamed('', new BoardType(), $board = new Board(), [
-            'csrf_protection' => false,
-        ]);
+        $form = $this->createNamelessForm($board = new Board);
 
         $form->handleRequest($request);
 
@@ -33,5 +32,40 @@ class BoardController extends FOSRestController
         }
 
         return $form;
+    }
+
+    /**
+     * @Rest\View()
+     *
+     * @ParamConverter("board")
+     */
+    public function putAction(Board $board, Request $request)
+    {
+        $form = $this->createNamelessForm($board, 'PUT');
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist($board);
+            $em->flush();
+
+            return $board;
+        }
+
+        return $form;
+    }
+
+    /**
+     * @param Board $board
+     * @param string $method
+     * @return \Symfony\Component\Form\Form|\Symfony\Component\Form\FormInterface
+     */
+    private function createNamelessForm(Board $board, $method = 'POST')
+    {
+        return $this->get('form.factory')->createNamed('', new BoardType, $board, [
+            'method' => $method,
+            'csrf_protection' => false,
+        ]);
     }
 }

@@ -3,7 +3,7 @@
 {% block content %}
 
     <div class="col-lg-offset-2 col-lg-8">
-        <h3><i class="fa fa-file-text-o"></i> {{ board.name }}</h3>
+        <h3><a href="{{ path('votee_app_board_edit', { hash: board.hash }) }}" data-toggle="tooltip" title="再編集"><i class="fa fa-pencil-square-o"></i></a> {{ board.name }}</h3>
 
         {% if board.note %}
             <p class="well">{{ board.note|nl2br }}</p>
