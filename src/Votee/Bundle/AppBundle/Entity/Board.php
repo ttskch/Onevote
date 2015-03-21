@@ -41,13 +41,6 @@ class Board
     private $name;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="voters", type="json_array", length=65535, nullable=true)
-     */
-    private $voters;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="note", type="text", nullable=true)
@@ -128,29 +121,6 @@ class Board
     }
 
     /**
-     * Set voters
-     *
-     * @param array $voters
-     * @return Board
-     */
-    public function setVoters($voters)
-    {
-        $this->voters = $voters;
-
-        return $this;
-    }
-
-    /**
-     * Get voters
-     *
-     * @return array
-     */
-    public function getVoters()
-    {
-        return $this->voters;
-    }
-
-    /**
      * Set note
      *
      * @param string $note
@@ -221,23 +191,5 @@ class Board
         }
 
         return $votes;
-    }
-
-    /**
-     * Get unvoted voters
-     *
-     * @return array
-     */
-    public function getUnvoters()
-    {
-        $voters = [];
-        foreach ($this->getVotes() as $vote) {
-            /** @var $vote Vote */
-            $voters[] = $vote->getVoter();
-        }
-
-        $unvoters = array_diff($this->voters, $voters);
-
-        return $unvoters;
     }
 }
