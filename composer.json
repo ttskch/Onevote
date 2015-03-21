@@ -1,6 +1,6 @@
 {
-    "name": "t-kanemoto/votee",
-    "license": "proprietary",
+    "name": "qckanemoto/votee",
+    "license": "MIT",
     "type": "project",
     "autoload": {
         "psr-0": {
