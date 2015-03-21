@@ -1,0 +1,91 @@
+{% set board = board|default(null) %}
+
+<form id="board-form" class="form-horizontal" data-id="{{ board ? board.id : '' }}">
+    <div class="form-group required">
+        <label class="col-sm-2 control-label">ボード名</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" name="name" value="{{ board ? board.name : '' }}" required autofocus/>
+        </div>
+    </div>
+
+    <div class="form-group required">
+        <label class="col-sm-2 control-label">選択肢</label>
+        <div class="col-sm-10 input-block-list">
+            {% for choice in (board ? board.choices : []) %}
+                <input class="form-control" type="text" name="choices[][name]" value="{{ choice.name }}" readonly/>
+            {% else %}
+                {% for i in 1..2 %}
+                    <div class="input-group">
+                        <input class="form-control" type="text" name="choices[][name]" required/>
+                        <span class="input-group-btn">
+                            <span class="btn btn-danger btn-remove"><i class="fa fa-minus"></i></span>
+                        </span>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            <span class="btn btn-default btn-block btn-add" data-prototype="#choice-prototype"><i class="fa fa-plus"></i></span>
+
+            <div id="choice-prototype">
+                {% filter escape %}
+                <div class="input-group">
+                    <input class="form-control" type="text" name="choices[][name]" required/>
+                    <span class="input-group-btn">
+                        <span class="btn btn-danger btn-remove"><i class="fa fa-minus"></i></span>
+                    </span>
+                </div>
+                {% endfilter %}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">投票者</label>
+        <div class="col-sm-10 input-block-list">
+            {% for voter in (board ? board.voters : []) %}
+                <div class="input-group">
+                    <input class="form-control" type="text" name="voters[]" value="{{ voter }}" required/>
+                    <span class="input-group-btn">
+                        <span class="btn btn-danger btn-remove"><i class="fa fa-minus"></i></span>
+                    </span>
+                </div>
+            {% endfor %}
+
+            <span class="btn btn-default btn-block btn-add" data-prototype="#voter-prototype"><i class="fa fa-plus"></i></span>
+
+            <div id="voter-prototype">
+                {% filter escape %}
+                <div class="input-group">
+                    <input class="form-control" type="text" name="voters[]" required/>
+                    <span class="input-group-btn">
+                        <span class="btn btn-danger btn-remove"><i class="fa fa-minus"></i></span>
+                    </span>
+                </div>
+                {% endfilter %}
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">備考</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" rows="5" name="note" value="{{ board ? board.note : '' }}"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary btn-lg btn-block" type="submit"><i class="fa fa-check"></i> この内容で{{ board ? '上書き保存' : '作成' }}する</button>
+        </div>
+    </div>
+</form>
+
+{% if board is not null %}
+<hr/>
+<div class="text-right">
+    <ul class="list-inline">
+        <li><a class="btn btn-default" href="{{ path('votee_app_board_show', { hash: board.hash }) }}"><i class="fa fa-times"></i> キャンセル</a></li>
+        {#<li><a class="btn btn-danger" href=""><i class="fa fa-trash-o"></i> ボードを削除</a></li>#}
+    </ul>
+</div>
+{% endif %}
