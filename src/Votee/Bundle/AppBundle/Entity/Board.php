@@ -5,6 +5,7 @@ namespace Votee\Bundle\AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -15,6 +16,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Board
 {
+    use Timestampable;
+
     /**
      * @var integer
      *

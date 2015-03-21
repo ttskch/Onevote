@@ -27,7 +27,8 @@
         "knplabs/knp-menu": "~2.0@dev",
         "friendsofsymfony/jsrouting-bundle": "~1.5",
         "friendsofsymfony/rest-bundle": "~1.5",
-        "jms/serializer-bundle": "~0.13"
+        "jms/serializer-bundle": "~0.13",
+        "knplabs/doctrine-behaviors": "~1.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
