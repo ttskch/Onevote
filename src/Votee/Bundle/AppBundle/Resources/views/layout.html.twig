@@ -23,6 +23,15 @@
 
 {% block page_header %}{% endblock page_header %}
 
+{% block content_row %}
+    <div class="row">
+        <div class="col-lg-offset-1 col-lg-10">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    {% include 'VoteeAppBundle::widget-spinner-modal.html.twig' %}
+{% endblock %}
+
 {% block footer %}
     <p>Powered by <a href="https://github.com/qckanemoto/Votee" target="_blank">Votee</a></p>
 {% endblock footer %}
