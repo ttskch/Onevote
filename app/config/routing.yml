@@ -1,6 +1,6 @@
 votee_app:
-    resource: "@VoteeAppBundle/Resources/config/routing/routing.yml"
-    prefix:   /
+  resource: "@VoteeAppBundle/Resources/config/routing/routing.yml"
+  prefix: /
 
 fos_js_routing:
-    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+  resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
