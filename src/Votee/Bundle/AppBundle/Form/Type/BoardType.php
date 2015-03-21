@@ -16,7 +16,6 @@ class BoardType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('voters')
             ->add('note')
             ->add('choices', 'collection', [
                 'type' => new ChoiceType,

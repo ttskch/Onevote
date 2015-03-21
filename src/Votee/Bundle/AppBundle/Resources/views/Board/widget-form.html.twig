@@ -40,33 +40,6 @@
     </div>
 
     <div class="form-group">
-        <label class="col-sm-2 control-label">投票者</label>
-        <div class="col-sm-10 input-block-list">
-            {% for voter in (board ? board.voters : []) %}
-                <div class="input-group">
-                    <input class="form-control" type="text" name="voters[]" value="{{ voter }}" required/>
-                    <span class="input-group-btn">
-                        <span class="btn btn-danger btn-remove"><i class="fa fa-minus"></i></span>
-                    </span>
-                </div>
-            {% endfor %}
-
-            <span class="btn btn-default btn-block btn-add" data-prototype="#voter-prototype"><i class="fa fa-plus"></i></span>
-
-            <div id="voter-prototype">
-                {% filter escape %}
-                <div class="input-group">
-                    <input class="form-control" type="text" name="voters[]" required/>
-                    <span class="input-group-btn">
-                        <span class="btn btn-danger btn-remove"><i class="fa fa-minus"></i></span>
-                    </span>
-                </div>
-                {% endfilter %}
-            </div>
-        </div>
-    </div>
-
-    <div class="form-group">
         <label class="col-sm-2 control-label">備考</label>
         <div class="col-sm-10">
             <textarea class="form-control" rows="5" name="note" value="{{ board ? board.note : '' }}"></textarea>

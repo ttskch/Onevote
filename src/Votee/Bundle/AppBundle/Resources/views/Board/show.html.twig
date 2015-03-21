@@ -9,15 +9,6 @@
             <p class="well">{{ board.note|nl2br }}</p>
         {% endif %}
 
-        {% if board.unvoters %}
-            <p class="well">
-                <strong>未投票者：</strong>
-                {% for name in board.unvoters %}
-                    <span class="label label-danger">{{ name }}</span>
-                {% endfor %}
-            </p>
-        {% endif %}
-
         {% block tabs %}
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#">投票する</a></li>
@@ -30,15 +21,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">あなたの名前</label>
                     <div class="col-sm-10">
-                        {% if board.voters %}
-                            <select class="form-control" name="voter" required autofocus>
-                                {% for name in board.unvoters %}
-                                    <option value="{{ name }}">{{ name }}</option>
-                                {% endfor %}
-                            </select>
-                        {% else %}
-                            <input class="form-control" type="text" name="voter" placeholder="省略可"/>
-                        {% endif %}
+                        <input class="form-control" type="text" name="voter" placeholder="省略可"/>
                     </div>
                 </div>
 
