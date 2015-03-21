@@ -33,6 +33,7 @@
                 <th>投票者</th>
                 <th>選択肢</th>
                 <th>コメント</th>
+                <th>投票日時</th>
             </tr>
             </thead>
             <tbody>
@@ -40,7 +41,8 @@
                 <tr>
                     <td>{{ vote.voter|default('名無しさん') }}</td>
                     <td>{{ vote.choice.name }}</td>
-                    <td>{{ vote.note }}</td>
+                    <td>{{ vote.note|nl2br }}</td>
+                    <td>{{ vote.createdAt ? vote.createdAt|date('Y/m/d H:i:s') : '-' }}</td>
                 </tr>
             {% endfor %}
             </tbody>

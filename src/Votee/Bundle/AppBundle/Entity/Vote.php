@@ -3,6 +3,7 @@
 namespace Votee\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 
 /**
  * Vote
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Vote
 {
+    use Timestampable;
+
     /**
      * @var integer
      *
