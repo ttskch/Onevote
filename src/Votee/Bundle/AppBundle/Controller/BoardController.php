@@ -14,6 +14,14 @@ use Votee\Bundle\AppBundle\Entity\Board;
 class BoardController extends Controller
 {
     /**
+     * @Route("/{hash}", requirements={"hash"="\w{31}"})
+     */
+    public function tmpShowAction($hash)
+    {
+        return $this->redirectToRoute('votee_app_board_show', ['hash' => $hash]);
+    }
+
+    /**
      * @Route("/show/{hash}", name="votee_app_board_show")
      * @Template()
      *
