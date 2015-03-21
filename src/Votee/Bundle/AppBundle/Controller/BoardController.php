@@ -14,12 +14,12 @@ use Votee\Bundle\AppBundle\Entity\Board;
 class BoardController extends Controller
 {
     /**
-     * @Route("/{hash}", name="votee_app_board_index")
+     * @Route("/show/{hash}", name="votee_app_board_show")
      * @Template()
      *
      * @ParamConverter("board", class="VoteeAppBundle:Board")
      */
-    public function indexAction(Board $board)
+    public function showAction(Board $board)
     {
         return [
             'board' => $board,
@@ -27,25 +27,34 @@ class BoardController extends Controller
     }
 
     /**
-     * @Route("/{hash}/edit", name="votee_app_board_edit")
-     * @Template()
-     *
-     * @ParamConverter("board", class="VoteeAppBundle:Board")
-     */
-    public function editAction(Board $board)
-    {
-        return [
-            'board' => $board,
-        ];
-    }
-
-    /**
-     * @Route("/{hash}/votes", name="votee_app_board_votes")
+     * @Route("/show/{hash}/votes", name="votee_app_board_show_votes")
      * @Template()
      *
      * @ParamConverter("board", class="VoteeAppBundle:Board")
      */
     public function votesAction(Board $board)
+    {
+        return [
+            'board' => $board,
+        ];
+    }
+
+    /**
+     * @Route("/new", name="votee_app_board_new")
+     * @Template()
+     */
+    public function newAction()
+    {
+        return [];
+    }
+
+    /**
+     * @Route("/edit/{hash}", name="votee_app_board_edit")
+     * @Template()
+     *
+     * @ParamConverter("board", class="VoteeAppBundle:Board")
+     */
+    public function editAction(Board $board)
     {
         return [
             'board' => $board,
