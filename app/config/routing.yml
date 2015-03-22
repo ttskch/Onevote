@@ -11,7 +11,7 @@ votee_app_default_locale:
   requirements:
     url: "[^(%locales%)]?.*"
   defaults:
-    _controller: VoteeAppBundle:DefaultLocale:index
+    _controller: VoteeAppBundle:Default:defaultLocaleRedirect
 
 fos_js_routing:
   resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
