@@ -2,14 +2,14 @@ votee_app:
   resource: "@VoteeAppBundle/Resources/config/routing/routing.yml"
   prefix: /{_locale}
   requirements:
-    _locale: ja|en
+    _locale: %locales%
   defaults:
     _locale: %locale%
 
 votee_app_default_locale:
   path: /{url}
   requirements:
-    url: "[^(ja|en)]?.*"
+    url: "[^(%locales%)]?.*"
   defaults:
     _controller: VoteeAppBundle:DefaultLocale:index
 

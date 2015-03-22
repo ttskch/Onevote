@@ -4,6 +4,9 @@ imports:
     - { resource: services.yml }
     - { resource: ../../vendor/knplabs/doctrine-behaviors/config/orm-services.yml }
 
+parameters:
+    locales: ja|en
+
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }
