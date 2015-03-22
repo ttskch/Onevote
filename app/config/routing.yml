@@ -3,13 +3,11 @@ votee_app:
   prefix: /{_locale}
   requirements:
     _locale: %locales%
-  defaults:
-    _locale: %locale%
 
 votee_app_default_locale:
   path: /{url}
   requirements:
-    url: "[^(%locales%)]?.*"
+    url: "^[^(%locales%)]?.*"
   defaults:
     _controller: VoteeAppBundle:Default:defaultLocaleRedirect
 
