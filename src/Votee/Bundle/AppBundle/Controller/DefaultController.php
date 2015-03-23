@@ -20,12 +20,4 @@ class DefaultController extends Controller
     {
         return [];
     }
-
-    public function defaultLocaleRedirectAction(Request $request)
-    {
-        $url = $request->getRequestUri();
-        $url = '/' . $this->container->getParameter('locale') . $url;
-
-        return $this->redirect($url, 301);
-    }
 }
