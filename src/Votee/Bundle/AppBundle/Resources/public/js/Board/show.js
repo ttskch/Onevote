@@ -20,11 +20,11 @@ $(function () {
         var data = $(this).serializeJSON();
         $.ajax({
             type: 'POST',
-            url: Routing.generate('api_v1_votee_app_post_vote', { _format: 'json' }),
+            url: Routing.generate('api_v1_votee_app_post_vote', { _format: 'json', _locale: $('html').attr('lang') }),
             dataType: 'json',
             data: data
         }).done(function (data) {
-            location.href = Routing.generate('votee_app_board_show_votes', { hash: data.choice.board.hash });
+            location.href = Routing.generate('votee_app_board_show_votes', { hash: data.choice.board.hash, _locale: $('html').attr('lang') });
         }).fail(function (xhr) {
             $('#spinner-modal').modal('hide');
             // todo.
