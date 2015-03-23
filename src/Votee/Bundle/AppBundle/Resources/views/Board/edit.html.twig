@@ -1,7 +1,7 @@
 {% extends 'VoteeAppBundle::layout.html.twig' %}
 
 {% block content %}
-    <h3><i class="fa fa-pencil-square-o"></i> 投票ボードを編集する</h3>
+    <h3><i class="fa fa-pencil-square-o"></i> {{ 'board.edit.heading'|trans }}</h3>
     {% include 'VoteeAppBundle:Board:widget-form.html.twig' with { board: board } %}
 {% endblock %}
 

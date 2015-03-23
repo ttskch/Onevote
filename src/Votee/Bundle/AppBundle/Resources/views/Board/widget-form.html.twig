@@ -2,14 +2,14 @@
 
 <form id="board-form" class="form-horizontal" data-id="{{ board ? board.id : '' }}">
     <div class="form-group required">
-        <label class="col-sm-2 control-label">ボード名</label>
+        <label class="col-sm-2 control-label">{{ 'form.board.name.label'|trans }}</label>
         <div class="col-sm-10">
             <input class="form-control" type="text" name="name" value="{{ board ? board.name : '' }}" required autofocus/>
         </div>
     </div>
 
     <div class="form-group required">
-        <label class="col-sm-2 control-label">選択肢</label>
+        <label class="col-sm-2 control-label">{{ 'form.board.choice.label'|trans }}</label>
         <div class="col-sm-10 input-block-list">
             {% for choice in (board ? board.choices : []) %}
                 <input class="form-control" type="text" name="choices[][name]" value="{{ choice.name }}" readonly/>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="form-group">
-        <label class="col-sm-2 control-label">備考</label>
+        <label class="col-sm-2 control-label">{{ 'form.board.note.label'|trans }}</label>
         <div class="col-sm-10">
             <textarea class="form-control" rows="5" name="note" value="{{ board ? board.note : '' }}"></textarea>
         </div>
@@ -48,7 +48,10 @@
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button class="btn btn-primary btn-lg btn-block" type="submit"><i class="fa fa-check"></i> この内容で{{ board ? '上書き保存' : '作成' }}する</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">
+                <i class="fa fa-check"></i>
+                {{ board ? 'form.board.submit.label.edit'|trans : 'form.board.submit.label.new'|trans }}
+            </button>
         </div>
     </div>
 </form>
@@ -57,8 +60,8 @@
 <hr/>
 <div class="text-right">
     <ul class="list-inline">
-        <li><a class="btn btn-default" href="{{ path('votee_app_board_show', { hash: board.hash }) }}"><i class="fa fa-times"></i> キャンセル</a></li>
-        {#<li><a class="btn btn-danger" href=""><i class="fa fa-trash-o"></i> ボードを削除</a></li>#}
+        <li><a class="btn btn-default" href="{{ path('votee_app_board_show', { hash: board.hash }) }}"><i class="fa fa-times"></i> {{ 'form.board.cancel.label'|trans }}</a></li>
+        {#<li><a class="btn btn-danger" href=""><i class="fa fa-trash-o"></i> {{ 'form.board.delete.label'|trans }}</a></li>#}
     </ul>
 </div>
 {% endif %}
