@@ -98,3 +98,4 @@ mopa_bootstrap:
 fos_rest:
     view:
         view_response_listener: true
+        exception_wrapper_handler: Votee\Bundle\AppBundle\ExceptionWrapper\ExceptionWrapperHandler
