@@ -1,0 +1,52 @@
+board:
+  show:
+    tabs:
+      vote: Vote
+      show: Show results
+    edit: Edit
+
+  new:
+    heading: Create new board
+
+  edit:
+    heading: Edit board
+
+  votes:
+    voter:
+      label: Voter
+      default: Anonymouse
+    choice:
+      label: Choices
+    note:
+      label: Comment
+    created_at:
+      label: Voted at
+
+form:
+  board:
+    name:
+      label: Board name
+    choice:
+      label: Choices
+    note:
+      label: Descriptions
+    submit:
+      label:
+        new: Create board
+        edit: Save board
+    cancel:
+      label: Cancel
+    delete:
+      label: Delete board
+
+  vote:
+    voter:
+      label: Your name
+      placeholder: Optional
+    choice:
+      label: Choices
+    note:
+      label: Comment
+      placeholder: Optional
+    submit:
+      label: Vote

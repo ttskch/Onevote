@@ -2,8 +2,8 @@
 
 {% block tabs %}
     <ul class="nav nav-tabs">
-        <li><a href="{{ path('votee_app_board_show', { hash: board.hash }) }}">投票する</a></li>
-        <li class="active"><a href="#">結果を見る</a></li>
+        <li><a href="{{ path('votee_app_board_show', { hash: board.hash }) }}">{{ 'board.show.tabs.vote'|trans }}</a></li>
+        <li class="active"><a href="#">{{ 'board.show.tabs.show'|trans }}</a></li>
     </ul>
 {% endblock %}
 
@@ -30,16 +30,16 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>投票者</th>
-                <th>選択肢</th>
-                <th>コメント</th>
-                <th>投票日時</th>
+                <th>{{ 'board.votes.voter.label'|trans }}</th>
+                <th>{{ 'board.votes.choice.label'|trans }}</th>
+                <th>{{ 'board.votes.note.label'|trans }}</th>
+                <th>{{ 'board.votes.created_at.label'|trans }}</th>
             </tr>
             </thead>
             <tbody>
             {% for vote in board.votes %}
                 <tr>
-                    <td>{{ vote.voter|default('名無しさん') }}</td>
+                    <td>{{ vote.voter|default('board.votes.voter.default'|trans) }}</td>
                     <td>{{ vote.choice.name }}</td>
                     <td>{{ vote.note|nl2br }}</td>
                     <td>{{ vote.createdAt ? vote.createdAt|date('Y/m/d H:i:s') : '-' }}</td>

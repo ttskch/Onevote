@@ -1,0 +1,52 @@
+board:
+  show:
+    tabs:
+      vote: 投票する
+      show: 結果を見る
+    edit: 再編集
+
+  new:
+    heading: 投票ボードを作成する
+
+  edit:
+    heading: 投票ボードを編集する
+
+  votes:
+    voter:
+      label: 投票者
+      default: 名無しさん
+    choice:
+      label: 選択肢
+    note:
+      label: コメント
+    created_at:
+      label: 投票日時
+
+form:
+  board:
+    name:
+      label: ボード名
+    choice:
+      label: 選択肢
+    note:
+      label: 説明文
+    submit:
+      label:
+        new: この内容で作成する
+        edit: この内容で上書き保存する
+    cancel:
+      label: キャンセル
+    delete:
+      label: ボードを削除
+
+  vote:
+    voter:
+      label: あなたの名前
+      placeholder: 省略可
+    choice:
+      label: 選択肢
+    note:
+      label: コメント
+      placeholder: 省略可
+    submit:
+      label: 投票する

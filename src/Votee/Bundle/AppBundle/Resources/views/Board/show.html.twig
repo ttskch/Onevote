@@ -1,7 +1,7 @@
 {% extends 'VoteeAppBundle::layout.html.twig' %}
 
 {% block content %}
-    <h3><a href="{{ path('votee_app_board_edit', { hash: board.hash }) }}" data-toggle="tooltip" title="再編集"><i class="fa fa-pencil-square-o"></i></a> {{ board.name }}</h3>
+    <h3><a href="{{ path('votee_app_board_edit', { hash: board.hash }) }}" data-toggle="tooltip" title="{{ 'board.show.edit'|trans }}"><i class="fa fa-pencil-square-o"></i></a> {{ board.name }}</h3>
 
     {% if board.note %}
         <p class="well">{{ board.note|nl2br }}</p>
@@ -9,22 +9,22 @@
 
     {% block tabs %}
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#">投票する</a></li>
-            <li><a href="{{ path('votee_app_board_show_votes', { hash: board.hash }) }}">結果を見る</a></li>
+            <li class="active"><a href="#">{{ 'board.show.tabs.vote'|trans }}</a></li>
+            <li><a href="{{ path('votee_app_board_show_votes', { hash: board.hash }) }}">{{ 'board.show.tabs.show'|trans }}</a></li>
         </ul>
     {% endblock %}
 
     {% block content_content %}
         <form id="submit-vote-form" class="form-horizontal" style="margin-bottom:50px;">
             <div class="form-group">
-                <label class="col-sm-2 control-label">あなたの名前</label>
+                <label class="col-sm-2 control-label">{{ 'form.vote.voter.label'|trans }}</label>
                 <div class="col-sm-10">
-                    <input class="form-control" type="text" name="voter" placeholder="省略可"/>
+                    <input class="form-control" type="text" name="voter" placeholder="{{ 'form.vote.voter.placeholder'|trans }}"/>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">選択肢</label>
+                <label class="col-sm-2 control-label">{{ 'form.vote.choice.label'|trans }}</label>
                 <div class="col-sm-10">
                     <table class="table table-bordered">
                         {% for choice in board.choices %}
@@ -51,14 +51,14 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">コメント</label>
+                <label class="col-sm-2 control-label">{{ 'form.vote.note.label'|trans }}</label>
                 <div class="col-sm-10">
-                    <textarea class="form-control" rows="5" name="note" placeholder="省略可"></textarea>
+                    <textarea class="form-control" rows="5" name="note" placeholder="{{ 'form.vote.note.placeholder'|trans }}"></textarea>
                 </div>
             </div>
 
             <div class="form-group text-center">
-                <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i> 投票する</button>
+                <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i> {{ 'form.vote.submit.label'|trans }}</button>
             </div>
         </form>
     {% endblock %}

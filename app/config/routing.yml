@@ -1,10 +1,8 @@
 votee_app:
-    resource: "@VoteeAppBundle/Resources/config/routing/routing.yml"
-    prefix:   /
+  resource: "@VoteeAppBundle/Resources/config/routing/routing.yml"
+  prefix: /{_locale}
+  requirements:
+    _locale: %locales%
 
 fos_js_routing:
-    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
-
-app:
-    resource: @AppBundle/Controller/
-    type:     annotation
+  resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
