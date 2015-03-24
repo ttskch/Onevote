@@ -4,6 +4,13 @@
     .table {
         margin-bottom: 0;
     }
+    &.has-error {
+        table {
+            th {
+                &:extend(.text-danger);
+            }
+        }
+    }
 }
 
 .progress {
