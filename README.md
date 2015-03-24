@@ -1,8 +1,8 @@
-# Votee
+# Onevote
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-Very simple voting tool running [here](https://votee.herokuapp.com/).
+The simplest voting tool running [here](https://onevote.herokuapp.com/).
 
 ## Requirements
 

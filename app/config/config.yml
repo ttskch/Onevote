@@ -34,6 +34,7 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     globals:
+      site_name: Onevote
       locales: %locales%
 
 # Assetic Configuration
@@ -98,4 +99,4 @@ mopa_bootstrap:
 fos_rest:
     view:
         view_response_listener: true
-        exception_wrapper_handler: Votee\Bundle\AppBundle\ExceptionWrapper\ExceptionWrapperHandler
+        exception_wrapper_handler: Onevote\Bundle\AppBundle\ExceptionWrapper\ExceptionWrapperHandler

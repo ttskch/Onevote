@@ -1,0 +1,88 @@
+{% extends 'OnevoteAppBundle::layout.html.twig' %}
+
+{% block content %}
+    <h3><a href="{{ path('onevote_app_board_edit', { hash: board.hash }) }}" data-toggle="tooltip" title="{{ 'board.show.edit'|trans }}"><i class="fa fa-pencil-square-o"></i></a> {{ board.name }}</h3>
+
+    {% if board.note %}
+        <p class="well">{{ board.note|nl2br }}</p>
+    {% endif %}
+
+    {% block tabs %}
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#">{{ 'board.show.tabs.vote'|trans }}</a></li>
+            <li><a href="{{ path('onevote_app_board_show_votes', { hash: board.hash }) }}">{{ 'board.show.tabs.show'|trans }}</a></li>
+        </ul>
+    {% endblock %}
+
+    {% block content_content %}
+        <form id="submit-vote-form" class="form-horizontal" style="margin-bottom:50px;">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{ 'form.vote.voter.label'|trans }}</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" name="voter" placeholder="{{ 'form.vote.voter.placeholder'|trans }}"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{ 'form.vote.choice.label'|trans }}</label>
+                <div class="col-sm-10">
+                    <table class="table table-bordered">
+                        {% for choice in board.choices %}
+                            {% set votes_num = choice.votes|length %}
+                            <tr>
+                                <th class="col-xs-9 col-sm-5">{{ choice.name }}</th>
+                                <td class="hidden-xs col-sm-5">
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width:{% if board.votes is empty %}0{% else %}{{ votes_num / board.votes|length * 100 }}{% endif %}%;">
+                                            {% if votes_num > 0 %}
+                                                <span>{{ votes_num }}</span>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-xs-3 col-sm-2">
+                                    <span class="btn btn-xs btn-default btn-block btn-plus-one" data-choice="{{ choice.id }}"><i class="fa fa-thumbs-o-up"></i></span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    <input type="hidden" name="choice"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{ 'form.vote.note.label'|trans }}</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" rows="5" name="note" placeholder="{{ 'form.vote.note.placeholder'|trans }}"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group text-center">
+                <button class="btn btn-primary" type="submit"><i class="fa fa-check"></i> {{ 'form.vote.submit.label'|trans }}</button>
+            </div>
+        </form>
+    {% endblock %}
+{% endblock %}
+
+{% block head_style %}
+    {% stylesheets filter='less,cssrewrite'
+    '@OnevoteAppBundle/Resources/public/less/Board/show.less'
+    %}
+    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block foot_script_assetic %}
+    {% javascripts
+    '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
+    '@MopaBootstrapBundle/Resources/public/bootstrap/dist/js/bootstrap.js'
+    '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
+    '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
+    'https://raw.githubusercontent.com/marioizquierdo/jquery.serializeJSON/master/jquery.serializejson.min.js'
+    '@OnevoteAppBundle/Resources/public/js/Board/show.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { 'callback': 'fos.Router.setData' }) }}"></script>
+    {% endjavascripts %}
+{% endblock %}

@@ -1,0 +1,6 @@
+services:
+  onevote_app.event_listener.request:
+    class: Onevote\Bundle\AppBundle\EventListener\RequestListener
+    arguments: [ %locale%, %locales% ]
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

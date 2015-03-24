@@ -1,0 +1,11 @@
+onevote_app:
+  resource: "@OnevoteAppBundle/Controller/"
+  type: annotation
+  options:
+    expose: true
+
+onevote_app_rest:
+  resource: "@OnevoteAppBundle/Resources/config/routing/rest.yml"
+  type: rest
+  options:
+    expose: true
