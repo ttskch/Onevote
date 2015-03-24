@@ -1,6 +1,8 @@
 {% set board = board|default(null) %}
 
 <form id="board-form" class="form-horizontal" data-id="{{ board ? board.id : '' }}">
+    <p class="alert alert-danger" style="display:none;">{{ 'form.board.error'|trans }}</p>
+
     <div class="form-group required">
         <label class="col-sm-2 control-label">{{ 'form.board.name.label'|trans }}</label>
         <div class="col-sm-10">

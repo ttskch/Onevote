@@ -24,6 +24,7 @@ board:
 
 form:
   board:
+    error: Invalid data was submitted
     name:
       label: Board name
     choice:
@@ -40,6 +41,7 @@ form:
       label: Delete board
 
   vote:
+    error: Invalid data was submitted
     voter:
       label: Your name
       placeholder: Optional

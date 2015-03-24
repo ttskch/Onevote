@@ -22,12 +22,28 @@ $(function () {
             type: 'POST',
             url: Routing.generate('api_v1_votee_app_post_vote', { _format: 'json', _locale: $('html').attr('lang') }),
             dataType: 'json',
-            data: data
+            data: data,
+            context: this
+
         }).done(function (data) {
             location.href = Routing.generate('votee_app_board_show_votes', { hash: data.choice.board.hash, _locale: $('html').attr('lang') });
+
         }).fail(function (xhr) {
             $('#spinner-modal').modal('hide');
-            // todo.
+            $(this).find('.alert').show();
+
+            var errors = JSON.parse(xhr.responseText);
+            var focused = false;
+            for (var key in errors) {
+                var $input = $(this).find('[name^="' + key + '"]');
+                $input.closest('.form-group').addClass('has-error').tooltip({
+                    title: errors[key]
+                });
+                if (!focused) {
+                    $input.focus();
+                    focused = true;
+                }
+            }
         });
     });
 });
