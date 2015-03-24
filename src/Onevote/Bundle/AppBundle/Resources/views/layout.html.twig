@@ -12,6 +12,9 @@
             <a class="navbar-brand" href="{{ path('home') }}">{{ site_name }}</a>
         {% endblock %}
         {% block menu %}
+            <ul class="nav navbar-nav">
+                <li><a href="{{ path('onevote_app_board_new') }}"><i class="fa fa-file-text-o"></i> {{ 'menu.new_board'|trans }}</a></li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% for locale in locales|split('|') %}
                     <li class="{{ app.request.locale == locale ? 'active' : '' }}">
@@ -23,6 +26,14 @@
             </ul>
         {% endblock %}
     {% endembed %}
+
+    {% if block('jumbotron') is not empty %}
+        <div class="jumbotron">
+            <div class="container">
+                {% block jumbotron %}{% endblock %}
+            </div>
+        </div>
+    {% endif %}
 {% endblock navbar %}
 
 {% block container_class %}container{% endblock container_class %}
