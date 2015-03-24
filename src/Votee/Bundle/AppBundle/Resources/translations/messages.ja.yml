@@ -24,6 +24,7 @@ board:
 
 form:
   board:
+    error: フォームの内容にエラーがあります
     name:
       label: ボード名
     choice:
@@ -40,6 +41,7 @@ form:
       label: ボードを削除
 
   vote:
+    error: フォームの内容にエラーがあります
     voter:
       label: あなたの名前
       placeholder: 省略可

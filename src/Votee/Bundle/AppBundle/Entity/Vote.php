@@ -4,6 +4,7 @@ namespace Votee\Bundle\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Vote
@@ -40,6 +41,8 @@ class Vote
 
     /**
      * @var Choice
+     *
+     * @Assert\NotBlank()
      *
      * @ORM\ManyToOne(targetEntity="Choice", inversedBy="votes")
      * @ORM\JoinColumn(name="choice_id", referencedColumnName="id", nullable=false)

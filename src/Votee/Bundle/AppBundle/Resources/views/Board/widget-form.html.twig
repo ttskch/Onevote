@@ -1,6 +1,8 @@
 {% set board = board|default(null) %}
 
 <form id="board-form" class="form-horizontal" data-id="{{ board ? board.id : '' }}">
+    <p class="alert alert-danger" style="display:none;">{{ 'form.board.error'|trans }}</p>
+
     <div class="form-group required">
         <label class="col-sm-2 control-label">{{ 'form.board.name.label'|trans }}</label>
         <div class="col-sm-10">
@@ -14,14 +16,18 @@
             {% for choice in (board ? board.choices : []) %}
                 <input class="form-control" type="text" name="choices[][name]" value="{{ choice.name }}" readonly/>
             {% else %}
-                {% for i in 1..2 %}
-                    <div class="input-group">
-                        <input class="form-control" type="text" name="choices[][name]" required/>
-                        <span class="input-group-btn">
-                            <span class="btn btn-danger btn-remove"><i class="fa fa-minus"></i></span>
-                        </span>
-                    </div>
-                {% endfor %}
+                <div class="input-group">
+                    <input class="form-control" type="text" name="choices[][name]" required/>
+                    <span class="input-group-btn">
+                        <span class="btn btn-danger disabled"><i class="fa fa-minus"></i></span>
+                    </span>
+                </div>
+                <div class="input-group">
+                    <input class="form-control" type="text" name="choices[][name]" required/>
+                    <span class="input-group-btn">
+                        <span class="btn btn-danger btn-remove"><i class="fa fa-minus"></i></span>
+                    </span>
+                </div>
             {% endfor %}
 
             <span class="btn btn-default btn-block btn-add" data-prototype="#choice-prototype"><i class="fa fa-plus"></i></span>
