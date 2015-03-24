@@ -1,5 +1,5 @@
-votee_app:
-  resource: "@VoteeAppBundle/Resources/config/routing/routing.yml"
+onevote_app:
+  resource: "@OnevoteAppBundle/Resources/config/routing/routing.yml"
   prefix: /{_locale}
   requirements:
     _locale: %locales%

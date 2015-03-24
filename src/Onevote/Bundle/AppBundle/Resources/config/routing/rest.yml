@@ -1,0 +1,11 @@
+onevote_app_rest_content:
+  resource: "@OnevoteAppBundle/Controller/Rest/BoardController.php"
+  type: rest
+  prefix: api/v1
+  name_prefix: api_v1_onevote_app_
+
+onevote_app_rest_vote:
+  resource: "@OnevoteAppBundle/Controller/Rest/VoteController.php"
+  type: rest
+  prefix: api/v1
+  name_prefix: api_v1_onevote_app_

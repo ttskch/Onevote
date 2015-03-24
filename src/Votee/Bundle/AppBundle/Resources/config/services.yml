@@ -1,6 +1,0 @@
-services:
-  votee_app.event_listener.request:
-    class: Votee\Bundle\AppBundle\EventListener\RequestListener
-    arguments: [ %locale%, %locales% ]
-    tags:
-      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
