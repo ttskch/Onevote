@@ -1,1 +1,6 @@
 {% extends 'OnevoteAppBundle:Board:new.html.twig' %}
+
+{% block jumbotron %}
+    <h1 class="unstyled">{{ site_name }}</h1>
+    <p>{{ 'jumbotron.description'|trans|raw }}</p>
+{% endblock %}

@@ -1,3 +1,9 @@
+jumbotron:
+  description: The simplest voting tool. You can organize decision making by just sharing the url with your friends or colleagues.<br>There are no need to sign up, no complicated setup, and it's totally free :)
+
+menu:
+  new_board: New
+
 board:
   show:
     tabs:

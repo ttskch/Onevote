@@ -1,3 +1,9 @@
+jumbotron:
+  description: Onevote（ワンボート）はURLをメンバーに送るだけで簡単に投票形式のアンケートがとれるツールです。<br>ユーザ登録や面倒な設定も不要、完全無料でどなたでもご利用いただけます。
+
+menu:
+  new_board: 新規作成
+
 board:
   show:
     tabs:
